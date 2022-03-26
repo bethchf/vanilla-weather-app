@@ -97,6 +97,8 @@ function displayCelcius(event) {
   let tempDisplay = document.querySelector("#temp-display");
   let roundedCelciusTemperature = Math.round(celciusTemperature);
   tempDisplay.innerHTML = `${roundedCelciusTemperature}°C`;
+  fahrenheitButton.classList.remove("active");
+  celciusButton.classList.add("active");
 }
 
 function displayFahrenheit(event) {
@@ -105,6 +107,8 @@ function displayFahrenheit(event) {
   let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
   let roundedFahrenheitTemperature = Math.round(fahrenheitTemperature);
   tempDisplay.innerHTML = `${roundedFahrenheitTemperature}°F`;
+  celciusButton.classList.remove("active");
+  fahrenheitButton.classList.add("active");
 }
 
 let celciusTemperature = null;

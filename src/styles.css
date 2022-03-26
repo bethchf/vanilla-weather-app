@@ -14,6 +14,11 @@ h5 {
 
 a {
   color: #000;
+  /* text-decoration: none; */
+}
+
+a:hover {
+  color: #787276;
 }
 
 .main-card {
@@ -83,4 +88,15 @@ a {
   background: #fff;
   border: #fff;
   font-size: 14px;
+}
+
+.active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+
+.active:hover {
+  text-decoration: none;
+  color: black;
 }
