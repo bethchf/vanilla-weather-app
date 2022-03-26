@@ -70,6 +70,11 @@ function showTemperature(response) {
   );
   weatherIcon.setAttribute("alt", response.data.weather[0].description);
 
+  let windSpeed = response.data.wind.speed;
+  let roundedWindSpeed = Math.round(windSpeed);
+  let weatherSpeed = document.querySelector("#weather-wind-speed");
+  weatherSpeed.innerHTML = roundedWindSpeed;
+
   celciusTemperature = Math.round(response.data.main.temp);
 }
 
@@ -138,6 +143,11 @@ function showTemperatureHere(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  let windSpeed = response.data.wind.speed;
+  let roundedWindSpeed = Math.round(windSpeed);
+  let weatherSpeed = document.querySelector("#weather-wind-speed");
+  weatherSpeed.innerHTML = roundedWindSpeed;
 
   celciusTemperature = Math.round(response.data.main.temp);
 }

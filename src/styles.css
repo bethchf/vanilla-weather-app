@@ -57,6 +57,11 @@ a:hover {
   margin: 0;
 }
 
+.weather-extra-details {
+  font-size: 16px;
+  margin: 0;
+}
+
 #temp-display {
   font-size: 28px;
 }
@@ -72,12 +77,6 @@ a:hover {
 }
 
 #weather-details {
-  font-size: 22px;
-  text-transform: capitalize;
-  margin: 0;
-}
-
-#weather-humidity {
   font-size: 22px;
   text-transform: capitalize;
   margin: 0;
