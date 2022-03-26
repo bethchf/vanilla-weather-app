@@ -1,0 +1,74 @@
+body {
+  margin: 60px;
+}
+
+h5 {
+  margin: 0;
+  padding: 8px 0;
+}
+
+h1,
+h5 {
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  color: #000;
+}
+
+.main-card {
+  margin: 80px 0;
+}
+
+.today-icon {
+  padding: 20px 12px;
+}
+
+.sun-icon {
+  font-size: 48px;
+}
+
+.weather-condition {
+  font-size: 22px;
+}
+
+.date-time {
+  font-size: 14px;
+}
+
+.forecast {
+  text-align: center;
+  padding: 8px 8px;
+}
+
+.forecast-icon {
+  font-size: 34px;
+  padding: 6px;
+}
+
+.forecast-temp {
+  font-size: 11px;
+  padding: 8px 0px;
+  margin: 0;
+}
+
+#temp-display {
+  font-size: 28px;
+}
+
+#city-display {
+  text-transform: capitalize;
+}
+
+#weather-description {
+  font-size: 24px;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+#location-button {
+  color: #6c757d;
+  background: #fff;
+  border: #fff;
+  font-size: 14px;
+}
