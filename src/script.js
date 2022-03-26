@@ -58,6 +58,10 @@ function showTemperature(response) {
   let description = response.data.weather[0].description;
   let weatherDescription = document.querySelector("#weather-description");
   weatherDescription.innerHTML = description;
+
+  let humidity = response.data.main.humidity;
+  let weatherHumidity = document.querySelector("#weather-humidity");
+  weatherHumidity.innerHTML = humidity;
 }
 
 function displayCity(event) {
@@ -71,6 +75,9 @@ function displayCity(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&units=metric`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 }
+
+// let testUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=f15fd07e82c8e347402ed872bc384665`;
+// console.log(testUrl);
 
 let form = document.querySelector("#city-form");
 form.addEventListener("submit", displayCity);
@@ -103,6 +110,10 @@ function showTemperatureHere(response) {
   let description = response.data.weather[0].description;
   let weatherDescription = document.querySelector("#weather-description");
   weatherDescription.innerHTML = description;
+
+  let humidity = response.data.main.humidity;
+  let weatherHumidity = document.querySelector("#weather-humidity");
+  weatherHumidity.innerHTML = humidity;
 }
 
 function retrievePosition(position) {

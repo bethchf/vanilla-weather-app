@@ -61,7 +61,19 @@ a {
 }
 
 #weather-description {
-  font-size: 24px;
+  font-size: 22px;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+#weather-details {
+  font-size: 22px;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+#weather-humidity {
+  font-size: 22px;
   text-transform: capitalize;
   margin: 0;
 }
