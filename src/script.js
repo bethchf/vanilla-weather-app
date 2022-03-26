@@ -62,6 +62,13 @@ function showTemperature(response) {
   let humidity = response.data.main.humidity;
   let weatherHumidity = document.querySelector("#weather-humidity");
   weatherHumidity.innerHTML = humidity;
+
+  let weatherIcon = document.querySelector("#icon");
+  weatherIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  weatherIcon.setAttribute("alt", response.data.weather[0].description);
 }
 
 function displayCity(event) {
@@ -114,6 +121,12 @@ function showTemperatureHere(response) {
   let humidity = response.data.main.humidity;
   let weatherHumidity = document.querySelector("#weather-humidity");
   weatherHumidity.innerHTML = humidity;
+
+  let weatherIcon = document.querySelector("#icon");
+  weatherIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function retrievePosition(position) {
