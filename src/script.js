@@ -131,8 +131,8 @@ function displayCity(event) {
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 }
 
-let testUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=f15fd07e82c8e347402ed872bc384665`;
-console.log(testUrl);
+// let testUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=f15fd07e82c8e347402ed872bc384665`;
+// console.log(testUrl);
 
 let form = document.querySelector("#city-form");
 form.addEventListener("submit", displayCity);
