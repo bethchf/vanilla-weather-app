@@ -49,6 +49,77 @@ if (minutes < 10) {
 
 showDate.innerHTML = `${currentDay} | ${currentDate} ${currentMonth} ${currentYear}, ${hours}:${minutes}`;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast-temperature");
+
+  let forecastHTML = `<div class="row">`;
+
+  let days = ["Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` <div class="col">
+      <div class="card">
+      <div class="card-body forecast">
+                        <h5>${day}</h5>
+                        <div class="d-flex justify-content-center">
+                          <i class="fas fa-cloud-sun-rain forecast-icon"></i>
+                        </div>
+                        <p class="forecast-temp">
+                          <span class="weather-forecast-temp-max">28</span>°C /
+                          <span class="weather-forecast-temp-min forecast-temp"
+                            >26</span
+                          >°C
+                        </p>
+                      </div>
+                      </div>
+                      </div>`;
+  });
+
+  // forecastHTML =
+  //   forecastHTML +
+  //   ` <div class="col">
+  //   <div class="card">
+  //   <div class="card-body forecast">
+  //                     <h5>Fri</h5>
+  //                     <div class="d-flex justify-content-center">
+  //                       <i class="fas fa-cloud-sun-rain forecast-icon"></i>
+  //                     </div>
+  //                     <p class="forecast-temp">
+  //                       <span class="weather-forecast-temp-max">28</span>°C /
+  //                       <span class="weather-forecast-temp-min forecast-temp"
+  //                         >26</span
+  //                       >°C
+  //                     </p>
+  //                   </div>
+  //                   </div>
+  //                   </div>`;
+
+  // forecastHTML =
+  //   forecastHTML +
+  //   ` <div class="col">
+  //   <div class="card">
+  //   <div class="card-body forecast">
+  //                     <h5>Fri</h5>
+  //                     <div class="d-flex justify-content-center">
+  //                       <i class="fas fa-cloud-sun-rain forecast-icon"></i>
+  //                     </div>
+  //                     <p class="forecast-temp">
+  //                       <span class="weather-forecast-temp-max">28</span>°C /
+  //                       <span class="weather-forecast-temp-min forecast-temp"
+  //                         >26</span
+  //                       >°C
+  //                     </p>
+  //                   </div>
+  //                   </div>
+  //                   </div>`;
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayForecast();
+
 // Feature 2
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
