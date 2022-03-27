@@ -49,32 +49,51 @@ if (minutes < 10) {
 
 showDate.innerHTML = `${currentDay} | ${currentDate} ${currentMonth} ${currentYear}, ${hours}:${minutes}`;
 
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
+  let forecast = response.data.daily;
   console.log(response.data.daily);
   let forecastElement = document.querySelector("#weather-forecast-temperature");
 
   let forecastHTML = `<div class="row">`;
 
   let days = ["Thu", "Fri", "Sat", "Sun"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      ` <div class="col">
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 4) {
+      forecastHTML =
+        forecastHTML +
+        ` <div class="col">
       <div class="card">
       <div class="card-body forecast">
-                        <h5>${day}</h5>
+                        <h5>${formatForecastDay(forecastDay.dt)}</h5>
                         <div class="d-flex justify-content-center">
-                          <i class="fas fa-cloud-sun-rain forecast-icon"></i>
+                          <img
+                      src="http://openweathermap.org/img/wn/${
+                        forecastDay.weather[0].icon
+                      }@2x.png"
+                      alt=""
+                    />
                         </div>
                         <p class="forecast-temp">
-                          <span class="weather-forecast-temp-max">28</span>°C /
+                          <span class="weather-forecast-temp-max">${Math.round(
+                            forecastDay.temp.max
+                          )}</span>°C /
                           <span class="weather-forecast-temp-min forecast-temp"
-                            >26</span
+                            >${Math.round(forecastDay.temp.min)}</span
                           >°C
                         </p>
                       </div>
                       </div>
                       </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -191,6 +210,8 @@ function showTemperatureHere(response) {
   weatherSpeed.innerHTML = roundedWindSpeed;
 
   celciusTemperature = Math.round(response.data.main.temp);
+
+  getForecast(response.data.coord);
 }
 
 function retrievePosition(position) {
