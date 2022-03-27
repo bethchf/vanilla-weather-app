@@ -49,12 +49,13 @@ if (minutes < 10) {
 
 showDate.innerHTML = `${currentDay} | ${currentDate} ${currentMonth} ${currentYear}, ${hours}:${minutes}`;
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#weather-forecast-temperature");
 
   let forecastHTML = `<div class="row">`;
 
-  let days = ["Thu", "Fri", "Sat"];
+  let days = ["Thu", "Fri", "Sat", "Sun"];
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
@@ -76,49 +77,16 @@ function displayForecast() {
                       </div>`;
   });
 
-  // forecastHTML =
-  //   forecastHTML +
-  //   ` <div class="col">
-  //   <div class="card">
-  //   <div class="card-body forecast">
-  //                     <h5>Fri</h5>
-  //                     <div class="d-flex justify-content-center">
-  //                       <i class="fas fa-cloud-sun-rain forecast-icon"></i>
-  //                     </div>
-  //                     <p class="forecast-temp">
-  //                       <span class="weather-forecast-temp-max">28</span>°C /
-  //                       <span class="weather-forecast-temp-min forecast-temp"
-  //                         >26</span
-  //                       >°C
-  //                     </p>
-  //                   </div>
-  //                   </div>
-  //                   </div>`;
-
-  // forecastHTML =
-  //   forecastHTML +
-  //   ` <div class="col">
-  //   <div class="card">
-  //   <div class="card-body forecast">
-  //                     <h5>Fri</h5>
-  //                     <div class="d-flex justify-content-center">
-  //                       <i class="fas fa-cloud-sun-rain forecast-icon"></i>
-  //                     </div>
-  //                     <p class="forecast-temp">
-  //                       <span class="weather-forecast-temp-max">28</span>°C /
-  //                       <span class="weather-forecast-temp-min forecast-temp"
-  //                         >26</span
-  //                       >°C
-  //                     </p>
-  //                   </div>
-  //                   </div>
-  //                   </div>`;
-
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
-displayForecast();
+function getForecast(coordinates) {
+  let apiKey = "f15fd07e82c8e347402ed872bc384665";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  // console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
 
 // Feature 2
 function showTemperature(response) {
@@ -147,6 +115,8 @@ function showTemperature(response) {
   weatherSpeed.innerHTML = roundedWindSpeed;
 
   celciusTemperature = Math.round(response.data.main.temp);
+
+  getForecast(response.data.coord);
 }
 
 function displayCity(event) {
@@ -161,8 +131,8 @@ function displayCity(event) {
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 }
 
-// let testUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=f15fd07e82c8e347402ed872bc384665`;
-// console.log(testUrl);
+let testUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=f15fd07e82c8e347402ed872bc384665`;
+console.log(testUrl);
 
 let form = document.querySelector("#city-form");
 form.addEventListener("submit", displayCity);
